@@ -163,11 +163,12 @@ img{max-width:100%;display:block}
       rgba(26,29,40,.45) 55%,
       rgba(26,29,40,.78) 82%,
       rgba(26,29,40,.98) 100%),
-    /* dégradé horizontal : assombrit la gauche (zone du titre) */
+    /* dégradé horizontal : assombrit fortement la gauche (zone du titre), laisse les visages clairs */
     linear-gradient(90deg,
-      rgba(26,29,40,.55) 0%,
-      rgba(26,29,40,.25) 40%,
-      rgba(26,29,40,0) 70%);
+      rgba(26,29,40,.7) 0%,
+      rgba(26,29,40,.45) 22%,
+      rgba(26,29,40,.15) 42%,
+      rgba(26,29,40,0) 60%);
   pointer-events:none;
 }
 @media(max-width:760px){
@@ -199,7 +200,7 @@ img{max-width:100%;display:block}
     var(--ink) 100%);
 }
 
-/* Contenu hero — title et CTAs ancrés en bas-gauche, eyebrow+pill en haut */
+/* Contenu hero — pleine largeur viewport (PAS .wrap centré), titre callé à gauche */
 .hero-content{
   position:relative;
   z-index:3;
@@ -208,12 +209,11 @@ img{max-width:100%;display:block}
   flex-direction:column;
   justify-content:flex-end;
   gap:36px;
-  padding-top:110px;
-  padding-bottom:90px;
+  padding:110px 24px 90px;
   color:var(--cream);
 }
 @media(min-width:900px){
-  .hero-content{padding-top:130px;padding-bottom:110px;gap:44px}
+  .hero-content{padding:130px 56px 110px;gap:44px}
 }
 
 .hero-top{
@@ -258,32 +258,32 @@ img{max-width:100%;display:block}
   100%{box-shadow:0 0 0 0 rgba(198,104,69,0)}
 }
 
-/* Titre hero — bas-gauche, contraint en largeur */
+/* Titre hero — bas-gauche, contraint en largeur (visage à droite préservé) */
 .hero-title{
-  font-size:clamp(54px,8.5vw,128px);
-  line-height:.93;
+  font-size:clamp(46px,5.5vw,84px);
+  line-height:.95;
   color:var(--cream);
-  max-width:11ch;
+  max-width:10ch;
   margin:0;
-  text-shadow:0 4px 50px rgba(0,0,0,.45);
+  text-shadow:0 4px 50px rgba(0,0,0,.55);
 }
 .hero-title .line{display:block}
 .hero-title em{
   font-style:italic;
   color:var(--terra-soft);
   font-variation-settings:"opsz" 144,"SOFT" 100;
-  text-shadow:0 4px 50px rgba(0,0,0,.55);
+  text-shadow:0 4px 50px rgba(0,0,0,.6);
 }
 .hero-title .small{
-  font-size:.5em;
+  font-size:.55em;
   display:block;
-  color:rgba(243,236,225,.82);
+  color:rgba(243,236,225,.85);
   margin-top:10px;
   font-style:italic;
   font-variation-settings:"opsz" 144,"SOFT" 100;
 }
 
-/* Bas du hero — triad + CTA, alignés sous le titre */
+/* Bas du hero — triad + CTA, restent groupés à gauche (pas écartés sur la droite) */
 .hero-bottom{
   display:flex;
   flex-direction:column;
@@ -293,9 +293,9 @@ img{max-width:100%;display:block}
 @media(min-width:900px){
   .hero-bottom{
     flex-direction:row;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap:40px;
+    align-items:center;
+    gap:36px;
+    flex-wrap:wrap;
   }
 }
 

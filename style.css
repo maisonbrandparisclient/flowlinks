@@ -397,7 +397,7 @@ img{max-width:100%;display:block}
   display:flex;
   gap:60px;
   padding:18px 0;
-  animation:scroll 38s linear infinite;
+  animation:scroll 22s linear infinite;
   font-family:"Fraunces",serif;
   font-style:italic;
   font-size:22px;

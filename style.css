@@ -16,7 +16,8 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+section{scroll-margin-top:80px}
 html,body{
   background:var(--cream);
   color:var(--ink);
@@ -630,7 +631,10 @@ img{max-width:100%;display:block}
    ============================================================ */
 .process{padding:80px 0;background:var(--ink);color:var(--cream);overflow:hidden}
 @media(min-width:900px){.process{padding:140px 0}}
-.process h2{font-size:clamp(40px,6vw,76px);max-width:18ch;margin-bottom:60px}
+.process h2{font-size:clamp(32px,7vw,76px);max-width:18ch;margin-bottom:50px}
+@media(min-width:760px){
+  .process h2{margin-bottom:60px}
+}
 .process h2 em{
   color:var(--terra-soft);
   font-variation-settings:"opsz" 144,"SOFT" 100;
@@ -645,31 +649,50 @@ img{max-width:100%;display:block}
   padding:32px 0;
   border-bottom:1px solid var(--rule-light);
   display:grid;
-  grid-template-columns:60px 1fr;
-  gap:24px;
+  grid-template-columns:48px 1fr;
+  grid-template-areas:
+    "n title"
+    "n desc";
+  column-gap:18px;
+  row-gap:10px;
   align-items:start;
   transition:.3s;
 }
+.step .n{grid-area:n}
+.step h4{grid-area:title}
+.step p{grid-area:desc}
+.step .dur{grid-area:dur;display:none}
 @media(min-width:760px){
   .step{
     grid-template-columns:80px 1.2fr 2fr 120px;
+    grid-template-areas:"n title desc dur";
     align-items:center;
     padding:40px 0;
+    column-gap:24px;
   }
+  .step .dur{display:block}
 }
 .step:hover{padding-left:16px}
 .step .n{
   font-family:"Fraunces",serif;
   font-style:italic;
-  font-size:38px;
+  font-size:34px;
   color:var(--terra-soft);
   font-weight:300;
+  line-height:1;
+}
+@media(min-width:760px){
+  .step .n{font-size:38px}
 }
 .step h4{
   font-family:"Fraunces",serif;
-  font-size:26px;
+  font-size:22px;
   font-weight:400;
   letter-spacing:-.01em;
+  line-height:1.15;
+}
+@media(min-width:760px){
+  .step h4{font-size:26px}
 }
 .step p{
   color:rgba(243,236,225,.65);
@@ -682,9 +705,7 @@ img{max-width:100%;display:block}
   letter-spacing:.15em;
   text-transform:uppercase;
   color:var(--terra-soft);
-  display:none;
 }
-@media(min-width:760px){.step .dur{display:block}}
 
 /* ============================================================
    QUOTE
@@ -866,417 +887,3 @@ body::after{
   }
   .reveal{opacity:1;transform:none}
 }
-
-/* ============================================================
-   AJUSTEMENTS MOBILE + TICKER
-   ============================================================ */
-
-/* Bandeau défilant plus rapide */
-.ticker-track{
-  animation-duration:14s;
-}
-
-@media(max-width:760px){
-  .hero{
-    min-height:100svh;
-  }
-
-  .hero-img img{
-    object-position:54% center;
-  }
-
-  .hero-top{
-    top:104px;
-    left:24px;
-    right:24px;
-    align-items:flex-start;
-  }
-
-  .hero-top .eyebrow{
-    max-width:150px;
-    line-height:1.8;
-  }
-
-  .hero-top .pill{
-    padding:12px 18px;
-    font-size:15px;
-    line-height:1.15;
-  }
-
-  .hero-content{
-    justify-content:flex-end;
-    gap:20px;
-    padding:150px 24px calc(88px + env(safe-area-inset-bottom)) 24px;
-  }
-
-  .hero-title{
-    font-size:clamp(40px,11vw,52px);
-    line-height:.97;
-    max-width:7.8ch;
-    margin-bottom:0;
-    position:relative;
-    transform:translateY(-140px);
-  }
-
-
-  .hero-title .small{
-    font-size:.48em;
-    margin-top:10px;
-  }
-
-  .hero-bottom{
-    gap:18px;
-    max-width:100%;
-  }
-
-  .triad{
-    gap:8px 14px;
-    font-size:16px;
-    line-height:1.25;
-  }
-
-  .triad span{
-    gap:8px;
-  }
-
-  .cta-row{
-    width:100%;
-    flex-direction:column;
-    gap:12px;
-  }
-
-  .btn{
-    width:min(100%, 390px);
-    justify-content:center;
-    padding:16px 20px;
-    font-size:15px;
-  }
-}
-
-
-/* ============================================================
-   CORRECTIONS FINALES MOBILE / MENU / CHIFFRES
-   ============================================================ */
-
-/* Quand on défile : le menu devient vraiment plein, pas transparent */
-.nav.scrolled{
-  background:var(--cream) !important;
-  backdrop-filter:none !important;
-  -webkit-backdrop-filter:none !important;
-  border-bottom-color:var(--rule) !important;
-  box-shadow:0 8px 28px rgba(26,29,40,.08);
-}
-
-.nav.scrolled .brand,
-.nav.scrolled .nav-links a,
-.nav.scrolled .nav-cta{
-  color:var(--ink) !important;
-}
-
-.nav.scrolled .nav-cta{
-  border-color:rgba(26,29,40,.35) !important;
-  background:rgba(251,247,239,.75);
-}
-
-/* Bandeau défilant encore plus rapide */
-.ticker-track{
-  animation-duration:12s !important;
-}
-
-/* Mobile : la section "Le chemin" respire, le texte n'est plus écrasé à gauche */
-@media(max-width:760px){
-  .process h2{
-    max-width:100%;
-    line-height:1.05;
-    margin-bottom:42px;
-  }
-
-  .step{
-    display:block;
-    padding:30px 0;
-  }
-
-  .step:hover{
-    padding-left:0;
-  }
-
-  .step .n{
-    display:block;
-    font-size:32px;
-    margin-bottom:12px;
-  }
-
-  .step h4{
-    font-size:28px;
-    line-height:1.05;
-    margin-bottom:12px;
-  }
-
-  .step p{
-    max-width:100%;
-    width:100%;
-    font-size:15px;
-    line-height:1.6;
-  }
-
-  .step .dur{
-    display:block;
-    margin-top:14px;
-  }
-}
-
-/* ============================================================
-   FIX DEFINITIF — SECTION "LE CHEMIN" MOBILE
-   ============================================================ */
-
-/* Évite que le titre soit caché sous le menu fixe quand on arrive sur l'ancre */
-#chemin{
-  scroll-margin-top:120px;
-}
-
-@media(max-width:760px){
-
-  /* Le menu au scroll reste opaque */
-  .nav.scrolled{
-    background:var(--cream) !important;
-    backdrop-filter:none !important;
-    -webkit-backdrop-filter:none !important;
-    border-bottom:1px solid var(--rule) !important;
-    box-shadow:0 8px 28px rgba(26,29,40,.08) !important;
-  }
-
-  .nav.scrolled .brand,
-  .nav.scrolled .nav-links a,
-  .nav.scrolled .nav-cta{
-    color:var(--ink) !important;
-  }
-
-  .nav.scrolled .nav-cta{
-    border-color:rgba(26,29,40,.45) !important;
-    background:var(--cream) !important;
-  }
-
-  /* Le problème venait de la grille : le paragraphe tombait dans la colonne de 60px */
-  .process .steps{
-    display:block !important;
-  }
-
-  .process .step{
-    display:grid !important;
-    grid-template-columns:72px 1fr !important;
-    column-gap:24px !important;
-    row-gap:10px !important;
-    align-items:start !important;
-    padding:34px 0 !important;
-  }
-
-  .process .step:hover{
-    padding-left:0 !important;
-  }
-
-  .process .step .n{
-    grid-column:1 !important;
-    grid-row:1 / span 3 !important;
-    font-size:38px !important;
-    line-height:1 !important;
-    margin:0 !important;
-  }
-
-  .process .step h4{
-    grid-column:2 !important;
-    grid-row:1 !important;
-    font-size:28px !important;
-    line-height:1.05 !important;
-    margin:0 0 8px 0 !important;
-  }
-
-  .process .step p{
-    grid-column:2 !important;
-    grid-row:2 !important;
-    width:100% !important;
-    max-width:none !important;
-    min-width:0 !important;
-    font-size:15px !important;
-    line-height:1.6 !important;
-    margin:0 !important;
-  }
-
-  .process .step .dur{
-    grid-column:2 !important;
-    grid-row:3 !important;
-    display:block !important;
-    margin-top:6px !important;
-  }
-
-  .process h2{
-    max-width:100% !important;
-    line-height:1.05 !important;
-    margin-bottom:34px !important;
-  }
-}
-
-/* Bandeau défilant plus rapide */
-.ticker-track{
-  animation-duration:12s !important;
-}
-
-
-/* ============================================================
-   TITRES / LABELS PLUS GROS
-   ============================================================ */
-
-/* "L'approche" */
-.side-label{
-  font-size:22px !important;
-  line-height:1.2 !important;
-}
-
-/* 01 · Format signature / 02 · À deux / etc. */
-.card .label{
-  font-size:17px !important;
-  line-height:1.25 !important;
-  letter-spacing:.02em !important;
-}
-
-/* Mobile : encore un peu plus lisible */
-@media(max-width:760px){
-  .side-label{
-    font-size:24px !important;
-  }
-
-  .card .label{
-    font-size:18px !important;
-  }
-}
-
-
-/* ============================================================
-   FIX RADICAL MOBILE — "LE CHEMIN" EN PLEINE LARGEUR
-   ============================================================ */
-
-@media(max-width:760px){
-
-  .process .steps{
-    display:block !important;
-    width:100% !important;
-  }
-
-  .process .step{
-    display:block !important;
-    width:100% !important;
-    padding:38px 0 !important;
-    border-bottom:1px solid var(--rule-light) !important;
-  }
-
-  .process .step:hover{
-    padding-left:0 !important;
-  }
-
-  .process .step .n{
-    display:block !important;
-    width:100% !important;
-    margin:0 0 18px 0 !important;
-    font-size:46px !important;
-    line-height:1 !important;
-  }
-
-  .process .step h4{
-    display:block !important;
-    width:100% !important;
-    max-width:none !important;
-    margin:0 0 16px 0 !important;
-    font-size:34px !important;
-    line-height:1.05 !important;
-  }
-
-  .process .step p{
-    display:block !important;
-    width:100% !important;
-    max-width:none !important;
-    min-width:0 !important;
-    margin:0 !important;
-    font-size:16px !important;
-    line-height:1.65 !important;
-  }
-
-  .process .step .dur{
-    display:block !important;
-    width:100% !important;
-    margin-top:16px !important;
-    font-size:12px !important;
-  }
-}
-
-/* FIX CHEMIN MOBILE DEFINITIF */
-
-
-@media (max-width: 760px){
-
-  section.process#chemin{
-    padding-top: 110px !important;
-    overflow: visible !important;
-  }
-
-  section.process#chemin .wrap{
-    width: 100% !important;
-    max-width: none !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-  }
-
-  section.process#chemin .steps{
-    display: block !important;
-    width: 100% !important;
-  }
-
-  section.process#chemin .step{
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 38px 0 !important;
-    gap: 0 !important;
-    grid-template-columns: none !important;
-  }
-
-  section.process#chemin .step .n,
-  section.process#chemin .step h4,
-  section.process#chemin .step p,
-  section.process#chemin .step .dur{
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    grid-column: auto !important;
-    grid-row: auto !important;
-  }
-
-  section.process#chemin .step .n{
-    display: block !important;
-    margin: 0 0 18px 0 !important;
-    font-size: 46px !important;
-    line-height: 1 !important;
-  }
-
-  section.process#chemin .step h4{
-    display: block !important;
-    margin: 0 0 16px 0 !important;
-    font-size: 34px !important;
-    line-height: 1.05 !important;
-  }
-
-  section.process#chemin .step p{
-    display: block !important;
-    margin: 0 !important;
-    font-size: 16px !important;
-    line-height: 1.65 !important;
-    white-space: normal !important;
-    word-break: normal !important;
-    overflow-wrap: normal !important;
-  }
-
-  section.process#chemin .step .dur{
-    display: block !important;
-    margin-top: 16px !important;
-  }
-}
-

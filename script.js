@@ -2,17 +2,13 @@
    flowlinks — script
    ============================================================ */
 
-// 1) Nav transparente → fond crème quand on scrolle hors du hero
+// 1) Nav transparente au départ, fond crème dès qu'on scrolle
 const nav = document.getElementById('nav');
-const heroHeight = () => {
-  const h = document.querySelector('.hero');
-  return h ? h.offsetHeight - 80 : 600;
-};
 let ticking = false;
 const onScroll = () => {
   if (!ticking) {
     window.requestAnimationFrame(() => {
-      if (window.scrollY > heroHeight()) {
+      if (window.scrollY > 60) {
         nav.classList.add('scrolled');
       } else {
         nav.classList.remove('scrolled');

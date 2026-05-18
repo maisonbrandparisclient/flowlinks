@@ -914,12 +914,10 @@ body::after{
     line-height:.97;
     max-width:7.8ch;
     margin-bottom:0;
-    transform:translateY(-82px);
+    position:relative;
+    transform:translateY(-96px);
   }
 
-  .hero-bottom{
-    margin-top:-70px;
-  }
 
   .hero-title .small{
     font-size:.48em;

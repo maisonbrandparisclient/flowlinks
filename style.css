@@ -904,9 +904,9 @@ body::after{
   }
 
   .hero-content{
-    justify-content:flex-start;
-    gap:24px;
-    padding:clamp(250px, 34svh, 310px) 24px calc(88px + env(safe-area-inset-bottom)) 24px;
+    justify-content:flex-end;
+    gap:20px;
+    padding:150px 24px calc(88px + env(safe-area-inset-bottom)) 24px;
   }
 
   .hero-title{
@@ -914,6 +914,11 @@ body::after{
     line-height:.97;
     max-width:7.8ch;
     margin-bottom:0;
+    transform:translateY(-82px);
+  }
+
+  .hero-bottom{
+    margin-top:-70px;
   }
 
   .hero-title .small{

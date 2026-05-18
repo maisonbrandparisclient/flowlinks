@@ -200,7 +200,7 @@ img{max-width:100%;display:block}
     var(--ink) 100%);
 }
 
-/* Contenu hero — pleine largeur viewport (PAS .wrap centré), titre callé à gauche */
+/* Contenu hero — pleine largeur viewport (PAS .wrap centré), titre callé à gauche avec respiration */
 .hero-content{
   position:relative;
   z-index:3;
@@ -213,7 +213,13 @@ img{max-width:100%;display:block}
   color:var(--cream);
 }
 @media(min-width:900px){
-  .hero-content{padding:130px 56px 110px;gap:44px}
+  .hero-content{padding:130px 72px 110px;gap:40px}
+}
+@media(min-width:1400px){
+  .hero-content{padding:130px 96px 110px}
+}
+@media(min-width:1800px){
+  .hero-content{padding:130px 128px 110px}
 }
 
 .hero-top{
@@ -227,7 +233,13 @@ img{max-width:100%;display:block}
   gap:16px;
 }
 @media(min-width:900px){
-  .hero-top{top:120px;left:56px;right:56px}
+  .hero-top{top:120px;left:72px;right:72px}
+}
+@media(min-width:1400px){
+  .hero-top{left:96px;right:96px}
+}
+@media(min-width:1800px){
+  .hero-top{left:128px;right:128px}
 }
 
 .pill{
@@ -283,20 +295,16 @@ img{max-width:100%;display:block}
   font-variation-settings:"opsz" 144,"SOFT" 100;
 }
 
-/* Bas du hero — triad + CTA, restent groupés à gauche (pas écartés sur la droite) */
+/* Bas du hero — TOUT en colonne, tout à gauche, sans exception */
 .hero-bottom{
   display:flex;
   flex-direction:column;
-  gap:24px;
+  align-items:flex-start;
+  justify-content:flex-start;
+  gap:22px;
   margin-top:0;
-}
-@media(min-width:900px){
-  .hero-bottom{
-    flex-direction:row;
-    align-items:center;
-    gap:36px;
-    flex-wrap:wrap;
-  }
+  width:auto;
+  max-width:520px;
 }
 
 .triad{

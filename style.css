@@ -866,3 +866,86 @@ body::after{
   }
   .reveal{opacity:1;transform:none}
 }
+
+/* ============================================================
+   AJUSTEMENTS MOBILE + TICKER
+   ============================================================ */
+
+/* Bandeau défilant plus rapide */
+.ticker-track{
+  animation-duration:14s;
+}
+
+@media(max-width:760px){
+  .hero{
+    min-height:100svh;
+  }
+
+  .hero-img img{
+    object-position:54% center;
+  }
+
+  .hero-top{
+    top:104px;
+    left:24px;
+    right:24px;
+    align-items:flex-start;
+  }
+
+  .hero-top .eyebrow{
+    max-width:150px;
+    line-height:1.8;
+  }
+
+  .hero-top .pill{
+    padding:12px 18px;
+    font-size:15px;
+    line-height:1.15;
+  }
+
+  .hero-content{
+    justify-content:flex-start;
+    gap:24px;
+    padding:clamp(250px, 34svh, 310px) 24px calc(88px + env(safe-area-inset-bottom)) 24px;
+  }
+
+  .hero-title{
+    font-size:clamp(40px,11vw,52px);
+    line-height:.97;
+    max-width:7.8ch;
+    margin-bottom:0;
+  }
+
+  .hero-title .small{
+    font-size:.48em;
+    margin-top:10px;
+  }
+
+  .hero-bottom{
+    gap:18px;
+    max-width:100%;
+  }
+
+  .triad{
+    gap:8px 14px;
+    font-size:16px;
+    line-height:1.25;
+  }
+
+  .triad span{
+    gap:8px;
+  }
+
+  .cta-row{
+    width:100%;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .btn{
+    width:min(100%, 390px);
+    justify-content:center;
+    padding:16px 20px;
+    font-size:15px;
+  }
+}
